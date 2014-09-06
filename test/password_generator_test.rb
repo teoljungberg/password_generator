@@ -18,4 +18,13 @@ class PasswordGeneratorTest < Minitest::Test
     skip "find character range for punct characters"
     assert_equal ("!".."|").to_a, PasswordGenerator::PUNCT
   end
+
+  def test_generate
+    exp_match = /[[:lower:]]*[[:upper:]]/
+    assert_match exp_match, PasswordGenerator.generate
+  end
+
+  def test_generate_length_defaults_to_50
+    assert_equal 50, PasswordGenerator.generate.size
+  end
 end
