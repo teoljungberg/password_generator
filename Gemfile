@@ -5,3 +5,4 @@ gemspec
 
 gem "bundler", "~> 1.7"
 gem "rake"
+gem "minitest"
