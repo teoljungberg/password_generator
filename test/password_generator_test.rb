@@ -2,7 +2,20 @@ require "minitest/autorun"
 require "password_generator"
 
 class PasswordGeneratorTest < Minitest::Test
-  def test_sanity
-    assert_equal 7, 3 + 4
+  def test_LOWER
+    assert_equal ("a".."z").to_a, PasswordGenerator::LOWER
+  end
+
+  def test_UPPER
+    assert_equal ("A".."Z").to_a, PasswordGenerator::UPPER
+  end
+
+  def test_DIGIT
+    assert_equal ("0".."9").to_a, PasswordGenerator::DIGIT
+  end
+
+  def test_PUNCT
+    skip "find character range for punct characters"
+    assert_equal ("!".."|").to_a, PasswordGenerator::PUNCT
   end
 end
