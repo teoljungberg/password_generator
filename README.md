@@ -1,26 +1,36 @@
 # PasswordGenerator
 
-TODO: Write a gem description
+Generate passwords based on certain options:
 
-## Installation
+- length
+- digits
+- punctuation characters
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'password_generator'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install password_generator
+Inspired by [Tim Pope's](https://github.com/tpope) Play-by-play over at
+[Pluralsihgt](http://www.pluralsight.com/training/Courses/TableOfContents/play-by-play-tim-pope)
 
 ## Usage
 
-TODO: Write usage instructions here
+If you want a password with that is 30 characters:
+
+```ruby
+>> PasswordGenerator.new(length: 30).generate
+=> "kpaeqdzNOHZToUtXcjLPDWmMSyfIrb"
+```
+
+With 6 digits:
+
+```ruby
+>> PasswordGenerator.new(digit: 6).generate
+=> "wfVcnsG1ypDaRCYjTKeNFJHmorg07QWvkPAhXLzBUOxit8udS5IMEbl3"
+```
+
+With 5 punctuation chars:
+
+```ruby
+>> PasswordGenerator.new(punct: 5).generate
+=> "dcZD,IiFGMmyql&CpnA(LbhNa]tRzXrUjE_SefTuvwWgsHVxYPJkoOQ"
+```
 
 ## Contributing
 
