@@ -27,4 +27,9 @@ class PasswordGeneratorTest < Minitest::Test
   def test_generate_length_defaults_to_50
     assert_equal 50, PasswordGenerator.generate.size
   end
+
+  def test_generate_with_digits
+    exp_match = /[[:lower:]]*[[:upper:]]*[[:digit:]]/
+    assert_match exp_match, PasswordGenerator.generate(digit: 5)
+  end
 end
