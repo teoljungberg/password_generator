@@ -2,12 +2,9 @@ require "minitest/autorun"
 require "password_generator"
 
 class PasswordGeneratorTest < Minitest::Test
-  def test_LOWER
-    assert_equal ("a".."z").to_a, PasswordGenerator::LOWER
-  end
-
-  def test_UPPER
-    assert_equal ("A".."Z").to_a, PasswordGenerator::UPPER
+  def test_ALPHA
+    alpha = ("A".."Z").to_a + ("a".."z").to_a
+    assert_equal alpha, PasswordGenerator::ALPHA
   end
 
   def test_DIGIT

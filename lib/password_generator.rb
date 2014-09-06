@@ -1,14 +1,13 @@
 class PasswordGenerator
   ASCII = "!".."~"
-  LOWER = ASCII.grep(/[[:lower:]]/)
-  UPPER = ASCII.grep(/[[:upper:]]/)
+  ALPHA = ASCII.grep(/[[:alpha:]]/)
   DIGIT = ASCII.grep(/[[:digit:]]/)
   PUNCT = ASCII.grep(/[[:punct:]]/)
 
   attr_reader :alphas, :length, :digits, :puncts
 
   def initialize length: 50, digit: 0, punct: 0
-    @alphas = (LOWER + UPPER).sample length
+    @alphas = ALPHA.sample length
     @digits = DIGIT.sample digit
     @puncts = PUNCT.sample punct
   end
