@@ -28,13 +28,25 @@ class PasswordGeneratorTest < Minitest::Test
     assert_equal 50, PasswordGenerator.generate.size
   end
 
+  def test_generate_custom_length
+    assert_equal 18, PasswordGenerator.generate(length: 18).size
+  end
+
   def test_generate_with_digits
-    exp_match = /[[:lower:]]*[[:upper:]]*[[:digit:]]/
-    assert_match exp_match, PasswordGenerator.generate(digit: 5)
+    exp_match          = /[[:lower:]]*[[:upper:]]*[[:digit:]]/
+    generated_password = PasswordGenerator.generate(digit: 5)
+    digits             = generated_password.split("").grep(/[[:digit:]]/)
+
+    assert_match exp_match, generated_password
+    assert_equal 5, digits.size
   end
 
   def test_generate_with_punct
-    exp_match = /[[:lower:]]*[[:upper:]]*[[:punct:]]/
-    assert_match exp_match, PasswordGenerator.generate(punct: 4)
+    exp_match          = /[[:lower:]]*[[:upper:]]*[[:punct:]]/
+    generated_password = PasswordGenerator.generate(punct: 4)
+    puncts             = generated_password.split("").grep(/[[:punct:]]/)
+
+    assert_match exp_match, generated_password
+    assert_equal 4, puncts.size
   end
 end
