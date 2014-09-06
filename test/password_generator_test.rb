@@ -32,4 +32,9 @@ class PasswordGeneratorTest < Minitest::Test
     exp_match = /[[:lower:]]*[[:upper:]]*[[:digit:]]/
     assert_match exp_match, PasswordGenerator.generate(digit: 5)
   end
+
+  def test_generate_with_punct
+    exp_match = /[[:lower:]]*[[:upper:]]*[[:punct:]]/
+    assert_match exp_match, PasswordGenerator.generate(punct: 4)
+  end
 end
