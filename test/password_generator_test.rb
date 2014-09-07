@@ -2,6 +2,15 @@ require "minitest/autorun"
 require "password_generator"
 
 class PasswordGeneratorTest < Minitest::Test
+  def assert_uniq passwd
+    count = Hash.new 0
+    passwd.split("").each_with_object count do |char, counter|
+      counter[char] += 1
+    end
+
+    assert count.values.uniq.size == 1, "'#{passwd}' is not uniq"
+  end
+
   def test_ALPHA
     alpha = ("A".."Z").to_a + ("a".."z").to_a
     assert_equal alpha, PasswordGenerator::ALPHA
@@ -19,6 +28,10 @@ class PasswordGeneratorTest < Minitest::Test
   def test_generate
     exp_match = /[[:lower:]]*[[:upper:]]/
     assert_match exp_match, PasswordGenerator.new.generate
+  end
+
+  def test_generate_is_always_uniq
+    assert_uniq PasswordGenerator.new.generate
   end
 
   def test_generate_length_defaults_to_50
