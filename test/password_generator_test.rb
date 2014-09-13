@@ -39,7 +39,7 @@ class PasswordGeneratorTest < Minitest::Test
   end
 
   def test_generate_custom_length
-    assert_equal 18, PasswordGenerator.new(length: 18).generate.size
+    assert_equal 42, PasswordGenerator.new(length: 42).generate.size
   end
 
   def test_generate_with_digits

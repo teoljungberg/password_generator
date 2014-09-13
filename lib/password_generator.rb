@@ -4,12 +4,13 @@ class PasswordGenerator
   DIGIT = ASCII.grep(/[[:digit:]]/)
   PUNCT = ASCII.grep(/[[:punct:]]/)
 
-  attr_reader :alphas, :length, :digits, :puncts
+  attr_reader :alphas, :digits, :puncts, :length
 
   def initialize length: 50, digit: 0, punct: 0
     @alphas = ALPHA.sample length
     @digits = DIGIT.sample digit
     @puncts = PUNCT.sample punct
+    @length = length
   end
 
   def generate
@@ -19,6 +20,7 @@ class PasswordGenerator
     password
       .flatten
       .shuffle
+      .sample(length)
       .join
   end
 end
