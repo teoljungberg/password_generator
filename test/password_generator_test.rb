@@ -43,14 +43,20 @@ class PasswordGeneratorTest < Minitest::Test
   end
 
   def test_generate_with_digits
-    generator = PasswordGenerator.new digit: 4
+    generator   = PasswordGenerator.new digit: 4
+    password    = generator.generate
+    digit_match = password.split("").grep(/[[:digit:]]/)
 
     assert_equal 4, generator.digits.size
+    assert_equal 4, digit_match.size
   end
 
   def test_generate_with_punct
-    generator = PasswordGenerator.new punct: 4
+    generator   = PasswordGenerator.new punct: 4
+    password    = generator.generate
+    punct_match = password.split("").grep(/[[:punct:]]/)
 
     assert_equal 4, generator.puncts.size
+    assert_equal 4, punct_match.size
   end
 end
