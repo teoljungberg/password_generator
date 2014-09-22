@@ -20,7 +20,6 @@ class PasswordGenerator
     password
       .flatten
       .shuffle
-      .sample(length)
       .join
   end
 end
